@@ -5,5 +5,8 @@ export class AppService {
   getHello(): string {
     return 'Hello World!';
   }
+  geta(): number {
+    return 1;
+  }
 }
  

@@ -1,8 +1,16 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { config } from "./config/index"
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.PORT ?? 3000);
+  app.setGlobalPrefix('blogging')
+  await app.listen(config.port);
+
+  app.enableCors({
+    origin: config.app_url, 
+    creadentials: true
+  })
 }
 bootstrap();
+  
